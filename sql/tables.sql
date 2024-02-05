@@ -3,7 +3,8 @@ username varchar(50),
 passwords varchar(50),
 email varchar(50),
 first_name varchar(30),
-last_name varchar(30)
+last_name varchar(30),
+primary key (username)
 );
 
 CREATE TABLE Admins(
@@ -11,7 +12,8 @@ username varchar(50),
 passwords varchar(50),
 email varchar(50),
 first_name varchar(30),
-last_name varchar(30)
+last_name varchar(30),
+primary key (username)
 );
 
 insert into Admins values ('jz4441', 'geohealth2024', 'jz4441@nyu.edu', 'Junwen', 'Zhong');
