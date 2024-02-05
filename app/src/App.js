@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from "./pages/Home";
 
