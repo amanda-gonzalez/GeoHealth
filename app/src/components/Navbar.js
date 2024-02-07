@@ -17,6 +17,7 @@ const Navbar = () => {
     return(
         <Container>
             <MenuItem to="/">GeoHealth</MenuItem>
+            <MenuItem to="/login">Login</MenuItem>
         </Container>
     )
 }
