@@ -6,6 +6,7 @@ const Container = styled.div`
     display: flex;
     color: white;
     height: 10vh;
+    justify-content: space-between;
 `;
 
 const MenuItem = styled(Link)`
