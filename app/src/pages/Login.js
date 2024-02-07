@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
+import LoginForm from "../components/LoginForm";
 
 const Background = styled.div`
     background-color: #A4E7F5;
@@ -11,22 +12,13 @@ const Background = styled.div`
     justify-content: center;
 `;
 
-const Form = styled.div`
-    background-color: white;
-    height: 50vh;
-    width: 50vh;
-`;
 
-const Input = styled.input`
-`;
 const Login = () => {
     return (
         <div>
             <Navbar/>
             <Background>
-                <Form>
-
-                </Form>
+                <LoginForm/>
             </Background>
 
         </div>
