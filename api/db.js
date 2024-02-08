@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+import mysql from "mysql";
 
 const dbConfig = mysql.createConnection( {
     host: "database-geohealth.ceppaqnusfom.us-east-2.rds.amazonaws.com",
