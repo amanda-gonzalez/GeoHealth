@@ -1,9 +1,14 @@
 import express from "express";
-import postRoutes from "./routes/posts.js"
+import regiRoutes from "./routes/register.js"
+
+import cors from "cors";
+
 const app = express();
+app.use(cors());
+
 app.use(express.json());
 
-app.use("/api/post", postRoutes);
+app.use("/api/register", regiRoutes);
 
 app.get('/', (req, res) => {
     res.send('This is on');
