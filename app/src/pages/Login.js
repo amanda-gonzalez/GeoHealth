@@ -13,14 +13,15 @@ const Background = styled.div`
 `;
 
 
+
 const Login = () => {
+
     return (
         <div>
             <Navbar/>
             <Background>
                 <LoginForm/>
             </Background>
-
         </div>
     )
 }

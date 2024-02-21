@@ -15,7 +15,9 @@ const Container = styled.div`
 const Input = styled.input`
   color: gainsboro;
 `;
+
 const LoginForm = () => {
+    const apiLink = "http://localhost:4000/api/auth/login";
     const [inputs, setInputs] = useState({
         username: "",
         password: ""
@@ -27,7 +29,7 @@ const LoginForm = () => {
     const login = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/auth/login", inputs);
+            const response = await axios.post(apiLink, inputs);
             console.log(response);
         } catch (error) {
             console.log(error);
