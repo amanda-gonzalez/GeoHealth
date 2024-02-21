@@ -1,0 +1,45 @@
+#title{
+    text-align: center;
+    font-size: small;
+}
+
+.credentials{
+    padding: 10px;
+    margin-left: 20px;
+    font-size: small;
+}
+
+#email, #password{
+    background-color: #F2F2F2;
+    border: none;
+    color: darkgrey;
+    padding: 5px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+}
+
+#login, #signup{
+    font-weight: bold;
+    background-color: #676AD5;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px 10px 10px 30px;
+    border-radius: 16px;
+}
+
+#register{
+    display: block;
+    margin-left: 35px;
+    color: #0047B1;
+}
+
+#register:hover{
+    text-decoration: underline;
+}
