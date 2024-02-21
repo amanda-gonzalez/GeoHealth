@@ -1,7 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
+
 import LoginForm from "../components/LoginForm";
+
+import {Link} from "react-router-dom";
+
 
 const Background = styled.div`
     background-color: #A4E7F5;
@@ -13,6 +17,13 @@ const Background = styled.div`
 `;
 
 
+const MenuItem = styled(Link)`
+    font-size: 5vh;
+    color: black;
+`;
+
+const Input = styled.input`
+`;
 
 const Login = () => {
 
@@ -21,6 +32,9 @@ const Login = () => {
             <Navbar/>
             <Background>
                 <LoginForm/>
+                <Form>
+                    <MenuItem to="/register">register</MenuItem>
+                </Form>
             </Background>
         </div>
     )
