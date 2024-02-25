@@ -30,7 +30,6 @@ const LoginForm = () => {
         e.preventDefault();
         try {
             const response = await axios.post(apiLink, inputs);
-            console.log(response);
         } catch (error) {
             console.log(error);
         }
