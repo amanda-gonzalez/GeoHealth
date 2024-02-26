@@ -5,6 +5,7 @@ import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 
 import {Link} from "react-router-dom";
+import './app.css';
 
 
 const Background = styled.div`
