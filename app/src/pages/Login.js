@@ -32,9 +32,7 @@ const Login = () => {
             <Navbar/>
             <Background>
                 <LoginForm/>
-                <Form>
                     <MenuItem to="/register">register</MenuItem>
-                </Form>
             </Background>
         </div>
     )
