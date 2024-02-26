@@ -30,9 +30,8 @@ const Input = styled.input`
 
 const Register = () => {
     const [values, setValues] = useState({
-        username: '',
-        password: '',
         email: '',
+        password: '',
         firstname: '',
         lastname: ''
     })
@@ -60,19 +59,14 @@ const Register = () => {
                 <Form action="" onSubmit={handleSubmit}>
                     <h1>Register</h1>
                     <div>
-                        <label htmlFor="username"><strong>Username</strong></label>
-                        <input onChange={handleInput} type="text" id="username" name="username"/>
-                        {errors.username && <ErrorMessage>{errors.username}</ErrorMessage>}
+                        <label htmlFor="email"><strong>Email</strong></label>
+                        <input onChange={handleInput} type="email" id="email" name="email"/>
+                        {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
                     </div>
                     <div>
                         <label htmlFor="password"><strong>Password</strong></label>
                         <input onChange={handleInput} type="password" id="password" name="password"/>
                         {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
-                    </div>
-                    <div>
-                        <label htmlFor="email"><strong>Email</strong></label>
-                        <input onChange={handleInput} type="email" id="email" name="email"/>
-                        {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
                     </div>
                     <div>
                         <label htmlFor="firstname"><strong>First Name</strong></label>

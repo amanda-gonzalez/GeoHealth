@@ -1,11 +1,10 @@
 import dbConfig from "../db.js"
 
 export const registerUser = (req, res) => {
-    const sql = "INSERT INTO Users (username, passwords, email, first_name, last_name) VALUES (?);";
+    const sql = "INSERT INTO Users (email, passwords, first_name, last_name) VALUES (?);";
     const values = [
-        req.body.username,
-        req.body.password,
         req.body.email,
+        req.body.password,
         req.body.firstname,
         req.body.lastname
     ]
