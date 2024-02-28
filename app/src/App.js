@@ -22,6 +22,7 @@ const router = createBrowserRouter([
     path:'/map',
     element:<Map/>
   }
+
 ]);
 
 const App = () => {

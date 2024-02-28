@@ -1,9 +1,13 @@
 import dbConfig from "../db.js"
-
+import bcrypt from "bcrypt";
 export const registerUser = (req, res) => {
+    const saltRounds = 10;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(req.body.password, salt);
     const sql = "INSERT INTO Users (email, passwords, first_name, last_name) VALUES (?);";
     const values = [
         req.body.email,
+        hash,
         req.body.password,
         req.body.firstname,
         req.body.lastname
