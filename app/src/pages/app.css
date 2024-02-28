@@ -13,21 +13,21 @@
     padding-bottom: 20px;
 }
 
-#firstname, #lastname{
+#firstnameDiv, #lastnameDiv{
     vertical-align: top;
     display: inline-block;
     width: 48%;
 }
 
-#lastname{
+#lastnameDiv{
     margin-right: 5px;
 }
 
-#firstname input, #lastname input{
+#firstnameDiv input, #lastnameDiv input{
     background-color: #F2F2F2;
     border: none;
     color: darkgrey;
-    padding: 5px 60px;
+    padding: 5px 50px;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
@@ -35,15 +35,15 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
 }
 
-#firstname input{
+#firstnameDiv input{
     float: left;
 }
 
-#lastname input{
+#lastnameDiv input{
     float: center;
 }
 
-#email input, #password input{
+#emailDiv input, #passwordDiv input{
     background-color: #F2F2F2;
     border: none;
     color: darkgrey;
@@ -88,4 +88,14 @@ button{
     padding-top: 30px;
     color: black;
     text-decoration: none;
+}
+
+#registerRedirect{
+    display: block;
+    margin-left: 35px;
+    color: #0047B1;
+}
+
+#registerRedirect:hover{
+    text-decoration: underline;
 }
