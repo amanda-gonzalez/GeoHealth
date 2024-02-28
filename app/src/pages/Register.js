@@ -34,9 +34,8 @@ const ErrorMessage = styled.span`
 
 const Register = () => {
     const [values, setValues] = useState({
-        username: '',
-        password: '',
         email: '',
+        password: '',
         firstname: '',
         lastname: ''
     })
@@ -63,30 +62,29 @@ const Register = () => {
             <Navbar/>
             <Background>
                 <Form action="" onSubmit={handleSubmit}>
-                    <h1 id="title">Sign Up</h1>
-                    <div class="credentials">
-                        <div id="firstname">
-                            <label htmlFor="firstname"><strong>First Name</strong></label>
-                            <input onChange={handleInput} type="text" id="firstname" name="firstname"/>
-                            {errors.firstname && <ErrorMessage>{errors.firstname}</ErrorMessage>}
-                        </div>
-                        <div id="lastname">
-                            <label htmlFor="lastname"><strong>Last Name</strong></label>
-                            <input onChange={handleInput} type="text" id="lastname" name="lastname"/>
-                            {errors.lastname && <ErrorMessage>{errors.lastname}</ErrorMessage>}
-                        </div>
-                        <div id="email">
-                            <label htmlFor="email"><strong>Email</strong></label>
-                            <input onChange={handleInput} type="email" id="email" name="email"/>
-                            {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
-                        </div>
-                        <div id="password">
-                            <label htmlFor="password"><strong>Password</strong></label>
-                            <input onChange={handleInput} type="password" id="password" name="password"/>
-                            {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
-                        </div>
+                    <h1>Register</h1>
+                    <div>
+                        <label htmlFor="email"><strong>Email</strong></label>
+                        <input onChange={handleInput} type="email" id="email" name="email"/>
+                        {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
                     </div>
-                    <button type="submit" id="signup">Sign Up</button><br/>
+                    <div>
+                        <label htmlFor="password"><strong>Password</strong></label>
+                        <input onChange={handleInput} type="password" id="password" name="password"/>
+                        {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+                    </div>
+                    <div>
+                        <label htmlFor="firstname"><strong>First Name</strong></label>
+                        <input onChange={handleInput} type="text" id="firstname" name="firstname"/>
+                        {errors.firstname && <ErrorMessage>{errors.firstname}</ErrorMessage>}
+                    </div>
+                    <div>
+                        <label htmlFor="lastname"><strong>Last Name</strong></label>
+                        <input onChange={handleInput} type="text" id="lastname" name="lastname"/>
+                        {errors.lastname && <ErrorMessage>{errors.lastname}</ErrorMessage>}
+                    </div>
+                    <button type="submit">Sign Up</button><br/>
+                    <Link to="/login">Already have an account? login here</Link>
                 </Form>
             </Background>
 
