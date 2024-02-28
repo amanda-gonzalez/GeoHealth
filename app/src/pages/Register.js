@@ -59,28 +59,28 @@ const Register = () => {
     
 
     return (
-        <div>
+        <div id="Register">
             <Navbar/>
             <Background>
                 <Form action="" onSubmit={handleSubmit}>
                     <h1 id="title">Sign Up</h1>
                     <div class="credentials">
-                        <div id="firstname">
+                        <div id="firstnameDiv">
                             <label htmlFor="firstname"><strong>First Name</strong></label>
                             <input onChange={handleInput} type="text" id="firstname" name="firstname"/>
                             {errors.firstname && <ErrorMessage>{errors.firstname}</ErrorMessage>}
                         </div>
-                        <div id="lastname">
+                        <div id="lastnameDiv">
                             <label htmlFor="lastname"><strong>Last Name</strong></label>
                             <input onChange={handleInput} type="text" id="lastname" name="lastname"/>
                             {errors.lastname && <ErrorMessage>{errors.lastname}</ErrorMessage>}
                         </div>
-                        <div id="email">
+                        <div id="emailDiv">
                             <label htmlFor="email"><strong>Email</strong></label>
                             <input onChange={handleInput} type="email" id="email" name="email"/>
                             {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
                         </div>
-                        <div id="password">
+                        <div id="passwordDiv">
                             <label htmlFor="password"><strong>Password</strong></label>
                             <input onChange={handleInput} type="password" id="password" name="password"/>
                             {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
