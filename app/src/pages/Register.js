@@ -34,9 +34,8 @@ const ErrorMessage = styled.span`
 
 const Register = () => {
     const [values, setValues] = useState({
-        username: '',
-        password: '',
         email: '',
+        password: '',
         firstname: '',
         lastname: ''
     })
@@ -86,7 +85,7 @@ const Register = () => {
                             {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
                         </div>
                     </div>
-                    <button type="submit" id="signup">Sign Up</button><br/>
+                    <button type="submit">Sign Up</button><br/>
                 </Form>
             </Background>
 

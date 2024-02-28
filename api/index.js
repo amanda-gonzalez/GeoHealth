@@ -1,6 +1,6 @@
 import express from "express";
 
-import authRoutes from "./routes/auth.js";
+import authRoutes from "./routes/login.js";
 
 import regiRoutes from "./routes/register.js"
 
