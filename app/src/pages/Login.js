@@ -1,12 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-
-import LoginForm from "../components/LoginForm";
-
 import {Link} from "react-router-dom";
-import './app.css';
+import axios from "axios";
 
+import './app.css';
 
 const Background = styled.div`
     background-color: #A4E7F5;
@@ -17,25 +15,77 @@ const Background = styled.div`
     justify-content: center;
 `;
 
+const Form = styled.form`
+    background-color: white;
+    height: 50vh;
+    width: 55vh;
+    border-radius: 10%;
+    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
+// const ErrorMessage = styled.span`
+//   color: red;
+//   font-size: 0.7rem;
+//   display: block;
+// `;
+
 
 const MenuItem = styled(Link)`
     font-size: 5vh;
+    font-size: smaller;
     color: black;
+    text-decoration: none;
 `;
 
-const Input = styled.input`
-`;
+const LoginForm = () => {
+    const apiLink = "http://localhost:4000/api/auth/login";
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    });
+    
 
-const Login = () => {
+    const handleChange = (e) => {
+        setInputs(prev=>({...prev, [e.target.name]: e.target.value}));
+    }
+    const login = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(apiLink, inputs);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-    return (
-        <div>
+    return(
+        <div id="Login">
             <Navbar/>
             <Background>
-                <LoginForm/>
-                    <MenuItem to="/register">register</MenuItem>
+                <Form action="" onSubmit={login}>
+                    <h1 id="title">Login</h1>
+                    <div class="credentials">
+                        <div id="emailDiv">
+                            <label htmlFor="email"><strong>Email</strong></label>
+                            <input onChange={handleChange} type="email" id="email" name="email" style={{paddingTop: 5+'px', 
+                                                                                                        paddingBottom: 5+'px',
+                                                                                                        paddingLeft: 100+'px',
+                                                                                                        paddingRight: 100+'px',}}/>
+                        </div>
+                        <div id="passwordDiv">
+                            <label htmlFor="password"><strong>Password</strong></label>
+                            <input onChange={handleChange} type="password" id="password" name="password" style={{paddingTop: 5+'px', 
+                                                                                                        paddingBottom: 5+'px',
+                                                                                                        paddingLeft: 100+'px',
+                                                                                                        paddingRight: 100+'px',}}/>
+                        </div>
+                    </div>
+                    <MenuItem id="registerRedirect" to="/register">New User? Sign Up Here</MenuItem>
+                    <button type="signin" id="signup">Sign In</button><br/>
+                </Form>
             </Background>
         </div>
     )
 }
-export default Login;
+
+export default LoginForm;
