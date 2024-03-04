@@ -1,3 +1,4 @@
+
 #title{
     text-align: center;
     font-size: larger;
@@ -98,4 +99,25 @@ button{
 
 #registerRedirect:hover{
     text-decoration: underline;
+}
+
+
+/* HOME */
+#mainArea{
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    background-color: #A4E7F5;
+    padding-top: 20px;
+}
+
+#mission{
+    text-align: center;
+    height: 20vh;
+    width: 75vw;
+    background-color: #D3F7FF;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
 }
