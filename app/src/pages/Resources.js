@@ -5,3 +5,9 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 
 import './app.css';
+
+const Resources = () =>{
+
+}
+
+export default Resources;
