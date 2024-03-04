@@ -60,7 +60,7 @@ const Register = () => {
     return (
         <div id="Register">
             <Navbar/>
-            <Background>
+            <div id="mainArea">
                 <Form action="" onSubmit={handleSubmit}>
                     <h1 id="title">Sign Up</h1>
                     <div class="credentials">
@@ -87,7 +87,7 @@ const Register = () => {
                     </div>
                     <button type="submit" id="signup">Sign Up</button><br/>
                 </Form>
-            </Background>
+            </div>
 
         </div>
     )
