@@ -17,11 +17,6 @@ const mapContainerStyle = {
   height: '100%',
 };
 
-const center = {
-    lat: 40.694340, // default latitude
-    lng: -73.986110, // default longitude
-  };
-
 const Map = () => {
     const {isLoaded} = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -29,25 +24,46 @@ const Map = () => {
     });
 
     const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+    const [userLocation, setUserLocation] = useState(null);
+
+    const getUserLocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              setUserLocation({ lat: latitude, lng: longitude });
+            },
+            (error) => {
+              console.error('Error getting location: ', error);
+            }
+          );
+        } else {
+          console.log('Geolocation not supported');
+        }
+    };
 
     if (!isLoaded) {
         return <div>Loading Map</div>;
     }
 
-    console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY); // Temporary check
+    console.log(userLocation);
 
     return (
         <div>
             <Navbar/>
             <Background>
-            <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                zoom={10}
-                center={center}
-                onLoad = {map => setMap(map)}
-            >
-                <Marker position={center} />
-            </GoogleMap>
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={10}
+                    center={userLocation}
+                    options = {{
+                        streetViewControl: false,
+                        mapTypeControl: false
+                    }}
+                    onLoad = {getUserLocation}
+                >
+                    <Marker position={userLocation} />
+                </GoogleMap>
             </Background>
         </div>
     )
