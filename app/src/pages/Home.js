@@ -2,18 +2,19 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 
+import './app.css';
 
-const Background = styled.div`
-    background-color: #A4E7F5;
-    display: flex;
-    height: 90vh;
-`;
+
 
 const Home = () => {
     return (
-        <div>
+        <div id="home">
             <Navbar/>
-            <Background/>
+            <div id="mainArea">
+                <div id="mission">
+                    <p>Mission Statement</p>
+                </div>
+            </div>
         </div>
     )
 }
