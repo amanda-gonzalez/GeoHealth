@@ -1,4 +1,7 @@
 import express from "express";
+
+import authRoutes from "./routes/login.js";
+
 import regiRoutes from "./routes/register.js"
 
 import cors from "cors";
@@ -8,12 +11,17 @@ app.use(cors());
 
 app.use(express.json());
 
+
+app.use("/api/auth", authRoutes);
+
 app.use("/api/register", regiRoutes);
+
 
 app.get('/', (req, res) => {
     res.send('This is on');
 });
 
-app.listen(4000, () => {
+app.listen(
+    4000, () => {
     console.log("Connected!");
 })
