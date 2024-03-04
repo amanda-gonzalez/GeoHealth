@@ -1,6 +1,6 @@
 import express from "express";
 
-import authRoutes from "./routes/login.js";
+import loginRoutes from "./routes/login.js";
 
 import regiRoutes from "./routes/register.js"
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 
-app.use("/api/auth", authRoutes);
+app.use("/api/login", loginRoutes);
 
 app.use("/api/register", regiRoutes);
 

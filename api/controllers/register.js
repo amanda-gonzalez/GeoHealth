@@ -8,7 +8,6 @@ export const registerUser = (req, res) => {
     const values = [
         req.body.email,
         hash,
-        req.body.password,
         req.body.firstname,
         req.body.lastname
     ]
