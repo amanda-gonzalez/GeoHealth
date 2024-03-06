@@ -51,6 +51,11 @@ const Map = () => {
         }
     };
 
+    function loadMap(mapInstance) {
+        setMap(mapInstance)
+        getUserLocation();
+    }
+
     if (!isLoaded) {
         return <div>Loading Map</div>;
     }
@@ -90,7 +95,7 @@ const Map = () => {
                         streetViewControl: false,
                         mapTypeControl: false
                     }}
-                    onLoad = {getUserLocation}
+                    onLoad = {loadMap}
                 >
                     <Marker position={userLocation} />
                     {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
@@ -114,7 +119,12 @@ const Map = () => {
                     <button type='submit' onClick={calculateRoute}>
                         Calculate Route
                     </button>
-                    <button aria-label='center back' onClick={clearRoute}></button> 
+                    <button aria-label='center back' onClick={clearRoute}>
+                        Clear Route
+                    </button> 
+                    <button onClick={()=>map.panTo(userLocation)}>
+                        Center
+                    </button>
                 </div>
             </Background>
         </div>
