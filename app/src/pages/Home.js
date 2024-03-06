@@ -12,7 +12,16 @@ const Home = () => {
             <Navbar/>
             <div id="mainArea">
                 <div id="mission">
-                    <p>Mission Statement</p>
+                    <h3>Mission Statement</h3>
+                    <p> Provide wide scale public health information catered to users’ local area improving community health efforts and elevate business outreach.</p>
+                </div>
+                <div id="homeMedia">
+                    <div class="hImg">
+                        <img></img>
+                    </div>
+                    <div class="hImg">
+                        <img></img>
+                    </div>
                 </div>
             </div>
         </div>

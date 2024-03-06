@@ -106,18 +106,34 @@ button{
 #mainArea{
     min-width: 100vw;
     height: 100vh;
-    display: flex;
-    align-items: top;
-    justify-content: center;
+    text-align: center;
     background-color: #A4E7F5;
     padding-top: 20px;
 }
 
 #mission{
+    margin: 0 auto;
+    padding: 5px;
     text-align: center;
     height: 20vh;
     width: 75vw;
     background-color: #D3F7FF;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+}
+
+#homeMedia{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.hImg{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 37vw;
+    height: 30vh;
+    background-color: #71CADE;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
 }
