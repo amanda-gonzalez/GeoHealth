@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
@@ -22,6 +23,7 @@ const LoginForm = () => {
         username: "",
         password: ""
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setInputs(prev=>({...prev, [e.target.name]: e.target.value}));
@@ -30,6 +32,7 @@ const LoginForm = () => {
         e.preventDefault();
         try {
             const response = await axios.post(apiLink, inputs);
+            navigate("/map");
             console.log(response);
         } catch (error) {
             console.log(error);
