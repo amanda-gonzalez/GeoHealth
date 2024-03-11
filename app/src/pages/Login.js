@@ -6,15 +6,6 @@ import axios from "axios";
 
 import './app.css';
 
-const Background = styled.div`
-    background-color: #A4E7F5;
-    display: flex;
-    height: 90vh;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-`;
-
 const Form = styled.form`
     background-color: white;
     height: 50vh;
@@ -61,7 +52,7 @@ const LoginForm = () => {
     return(
         <div id="Login">
             <Navbar/>
-            <Background>
+            <div id="mainArea">
                 <Form action="" onSubmit={login}>
                     <h1 id="title">Login</h1>
                     <div class="credentials">
@@ -83,7 +74,7 @@ const LoginForm = () => {
                     <MenuItem id="registerRedirect" to="/register">New User? Sign Up Here</MenuItem>
                     <button type="signin" id="signup">Sign In</button><br/>
                 </Form>
-            </Background>
+            </div>
         </div>
     )
 }

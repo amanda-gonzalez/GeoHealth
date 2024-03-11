@@ -2,18 +2,28 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 
+import './app.css';
 
-const Background = styled.div`
-    background-color: #A4E7F5;
-    display: flex;
-    height: 90vh;
-`;
+
 
 const Home = () => {
     return (
-        <div>
+        <div id="home">
             <Navbar/>
-            <Background/>
+            <div id="mainArea">
+                <div id="mission">
+                    <h3>Mission Statement</h3>
+                    <p> Provide wide scale public health information catered to users’ local area improving community health efforts and elevate business outreach.</p>
+                </div>
+                <div id="homeMedia">
+                    <div class="hImg">
+                        <img></img>
+                    </div>
+                    <div class="hImg">
+                        <img></img>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
