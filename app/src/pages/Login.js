@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 import './app.css';
@@ -29,20 +29,23 @@ const MenuItem = styled(Link)`
 `;
 
 const LoginForm = () => {
-    const apiLink = "http://localhost:4000/api/auth/login";
+    const apiLink = "http://localhost:4000/api/login/loginUser";
     const [inputs, setInputs] = useState({
         email: "",
         password: ""
     });
+    const navigate = useNavigate();
     
 
     const handleChange = (e) => {
         setInputs(prev=>({...prev, [e.target.name]: e.target.value}));
+
     }
     const login = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post(apiLink, inputs);
+            navigate("/map");
             console.log(response);
         } catch (error) {
             console.log(error);
