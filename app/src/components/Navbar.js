@@ -36,7 +36,9 @@ const Navbar = () => {
                 <MenuItem to="/">GeoHealth</MenuItem>
             </ItemContainer>
             <ItemContainer>
-                <Logo src={User} alt="User"/>
+                <MenuItem to="/login">
+                    <Logo src={User} alt="User"/>
+                </MenuItem>
             </ItemContainer>
         </Container>
     )
