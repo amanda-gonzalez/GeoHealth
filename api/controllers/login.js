@@ -37,7 +37,7 @@ export const loginUser = (request, response) => {
         if (error) return response.json(error);
         if (data.length === 0) return response.status(404).json("User not found!");
 
-        if (bcrypt.compareSync(request.body.password, data[0].password)) {
+        if (bcrypt.compareSync(request.body.password, data[0].passwords)) {
             const token = jwt.sign({id: data[0].id}, "jwtkey");
             response.status(200).json({token});
         } else {
