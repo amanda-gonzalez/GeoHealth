@@ -53,7 +53,7 @@ const LoginForm = () => {
     }
 
     return(
-        <div id="Login">
+        <div id="login">
             <Navbar/>
             <div id="mainArea">
                 <Form action="" onSubmit={login}>

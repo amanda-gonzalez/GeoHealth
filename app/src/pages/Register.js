@@ -58,7 +58,7 @@ const Register = () => {
     
 
     return (
-        <div id="Register">
+        <div id="register">
             <Navbar/>
             <div id="mainArea">
                 <Form action="" onSubmit={handleSubmit}>

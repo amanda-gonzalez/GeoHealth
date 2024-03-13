@@ -84,9 +84,8 @@ const Map = () => {
     }
 
     return (
-        <div>
+        <div id="map">
             <Navbar/>
-            <Background>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     zoom={15}
@@ -126,7 +125,6 @@ const Map = () => {
                         Center
                     </button>
                 </div>
-            </Background>
         </div>
     )
 }
