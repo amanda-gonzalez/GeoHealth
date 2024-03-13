@@ -37,9 +37,8 @@ const Map = () => {
     console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY); // Temporary check
 
     return (
-        <div>
+        <div id="map">
             <Navbar/>
-            <Background>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 zoom={10}
@@ -48,7 +47,6 @@ const Map = () => {
             >
                 <Marker position={center} />
             </GoogleMap>
-            </Background>
         </div>
     )
 }
