@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
-import { useState, useRef } from 'react';
+import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
+import { useState, useRef, useEffect } from 'react';
+import medicalMapMarker from "../images/medical_map_marker.webp";
 
 const Background = styled.div`
     background-color: #A4E7F5;
@@ -28,12 +29,15 @@ const Map = () => {
     const [directionsResponse, setDirectionsResponse] = useState(null);
     const [distance, setDistance] = useState('');
     const [duration, setDuration] = useState('');
+    const [places, setPlaces] = useState([]);
+    const [selectedPlace, setSelectedPlace] = useState(null);
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const sourceRef = useRef();
     /** @type React.MutableRefObject<HTMLInputElement> */
     const destinationRef = useRef();
-
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const mapRef = useRef();
 
     const getUserLocation = async () => {
         if (navigator.geolocation) {
@@ -51,10 +55,31 @@ const Map = () => {
         }
     };
 
-    function loadMap(mapInstance) {
-        setMap(mapInstance)
-        getUserLocation();
+    const searchPlaces = () => {
+        const service = new window.google.maps.places.PlacesService(mapRef.current);
+        const request = {
+            location: userLocation,
+            radius: '2500',
+            type: ['hospital']
+        };
+        service.nearbySearch(request, (results, status) => {
+            if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
+                setPlaces(results);
+            }
+        })
     }
+
+    const onMapLoad = useCallback((map) => {
+        mapRef.current = map;
+        setMap(map);
+        getUserLocation();
+    }, [])
+
+    useEffect(() => {
+        if (userLocation) {
+            searchPlaces();
+        }
+    }, [userLocation])
 
     if (!isLoaded) {
         return <div>Loading Map</div>;
@@ -95,10 +120,34 @@ const Map = () => {
                         streetViewControl: false,
                         mapTypeControl: false
                     }}
-                    onLoad = {loadMap}
+                    onLoad = {onMapLoad}
                 >
-                    <Marker position={userLocation} />
+                    <Marker 
+                        position={userLocation} 
+                        animation={window.google.maps.Animation.DROP}
+                    />
                     {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+                    {places.map((place) => (
+                        <Marker
+                            key={place.place_id}
+                            position={{ lat:place.geometry.location.lat(), lng:place.geometry.location.lng() }}
+                            onClick={() => setSelectedPlace(place)}
+                        />
+                    ))}
+                    {selectedPlace && (
+                        <InfoWindow 
+                            position={{
+                                lat:selectedPlace.geometry.location.lat(),
+                                lng:selectedPlace.geometry.location.lng()
+                            }}
+                            onCloseClick={() => setSelectedPlace(null)}
+                        >
+                            <div>
+                                <h2>{selectedPlace.name}</h2>
+                                <p>{selectedPlace.vicinity}</p>
+                            </div>
+                        </InfoWindow>
+                    )}
                 </GoogleMap>
 
                 <div>
