@@ -18,6 +18,7 @@ const mapContainerStyle = {
 };
 
 const Map = () => {
+    const [currentUser, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
     const {isLoaded} = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries
