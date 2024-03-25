@@ -3,15 +3,11 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import GeoHealthLogo from "../images/GeoHealth Logo 1.svg";
 import User from "../images/person-fill.svg";
+
+import './nav.css';
+
 const Container = styled.div`
-    display: flex;
-    height: 10vh;
-    background-color: rgba(0,0,0,0);
-    &:hover {
-        background-color: white;
-        box-shadow: 0px 20px 20px -20px grey;
-    }
-    z-index: 4;
+    
 `;
 
 const MenuItem = styled(Link)`
@@ -21,8 +17,7 @@ const MenuItem = styled(Link)`
 `;
 
 const Logo = styled.img`
-    height: 6vh;
-    width: 6vh;
+    
 `;
 
 const ItemContainer = styled.div`
@@ -30,12 +25,11 @@ const ItemContainer = styled.div`
     align-items: center;
     padding-left: 2vh;
     padding-right: 2vh;
+    border: 1px solid black;
 `;
 
 const NavContainer = styled.div`
-    display: flex;
-    align-items: left;
-    padding-right: 52vw;
+    
 `;
 
 const NavItem = styled(Link)`
@@ -51,28 +45,27 @@ const NavItem = styled(Link)`
     }
 `;
 
-
 const Navbar = () => {
     return(
-        <Container>
-            <ItemContainer>
+        <div id="nav">
+            <div id="logo">
                 <Logo src={GeoHealthLogo} alt="GeoHealth Logo"/>
                 <MenuItem to="/">GeoHealth</MenuItem>
-            </ItemContainer>
-            <NavContainer>
+            </div>
+            <div id="links">
                 <NavItem to="/map">
                     <h3>MAP</h3>
                 </NavItem>
                 <NavItem to="/resources">
                     <h3>RESOURCES</h3>
                 </NavItem>
-            </NavContainer>
-            <ItemContainer id="profile">
+            </div>
+            <div id="profile">
                 <MenuItem to="/login">
                     <Logo src={User} alt="User"/>
                 </MenuItem>
-            </ItemContainer>
-        </Container>
+            </div>
+        </div>
     )
 }
 
