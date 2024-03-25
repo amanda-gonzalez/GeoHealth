@@ -47,6 +47,7 @@ const LoginForm = () => {
             const response = await axios.post(apiLink, inputs);
             navigate("/map");
             console.log(response);
+            localStorage.setItem("user", JSON.stringify(response.data));
         } catch (error) {
             console.log(error);
         }
