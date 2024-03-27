@@ -33,10 +33,6 @@ const Map = () => {
     const [selectedPlace, setSelectedPlace] = useState(null);
 
     /** @type React.MutableRefObject<HTMLInputElement> */
-    const sourceRef = useRef();
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const destinationRef = useRef();
-    /** @type React.MutableRefObject<HTMLInputElement> */
     const mapRef = useRef();
 
     const getUserLocation = async () => {
@@ -119,7 +115,7 @@ const Map = () => {
     }
 
     return (
-        <div id="map">
+        <div>
             <Navbar/>
             <Background>
                 <div style={{ display: 'flex', height: '100vh', width: '60vh' }}>
@@ -140,7 +136,6 @@ const Map = () => {
                         ))}
                     </div>
                 </div>
-
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     zoom={15}
@@ -170,7 +165,6 @@ const Map = () => {
                             position={{ lat:place.geometry.location.lat(), lng:place.geometry.location.lng() }}
                             onClick={() => setSelectedPlace(place)}
                         />
-
                     ))}
                     {selectedPlace && (
                         <InfoWindow 
@@ -190,25 +184,6 @@ const Map = () => {
                     )}
                 </GoogleMap>
             </Background>
-
-                    </Autocomplete>
-                    <Autocomplete>
-                    <input
-                        type="text"
-                        placeholder="Destination"
-                        ref={destinationRef}
-                    />
-                    </Autocomplete>
-                    <button type='submit' onClick={calculateRoute}>
-                        Calculate Route
-                    </button>
-                    <button aria-label='center back' onClick={clearRoute}>
-                        Clear Route
-                    </button> 
-                    <button onClick={()=>map.panTo(userLocation)}>
-                        Center
-                    </button>
-                </div>
         </div>
     )
 }
