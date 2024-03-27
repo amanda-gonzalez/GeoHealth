@@ -190,26 +190,7 @@ const Map = () => {
                     )}
                 </GoogleMap>
             </Background>
-
-                    </Autocomplete>
-                    <Autocomplete>
-                    <input
-                        type="text"
-                        placeholder="Destination"
-                        ref={destinationRef}
-                    />
-                    </Autocomplete>
-                    <button type='submit' onClick={calculateRoute}>
-                        Calculate Route
-                    </button>
-                    <button aria-label='center back' onClick={clearRoute}>
-                        Clear Route
-                    </button> 
-                    <button onClick={()=>map.panTo(userLocation)}>
-                        Center
-                    </button>
-                </div>
-        </div>
+            </div>
     )
 }
 export default Map;
