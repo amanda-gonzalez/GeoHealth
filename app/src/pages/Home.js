@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <div id="home">
             <Navbar/>
-            <div id="mainArea">
+            <div id="HmainArea">
                 <div id="mission">
                     <h3>Mission Statement</h3>
                     <p> Provide wide scale public health information catered to users’ local area improving community health efforts and elevate business outreach.</p>

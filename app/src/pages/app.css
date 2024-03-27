@@ -14,6 +14,13 @@
     padding-bottom: 20px;
 }
 
+#mainArea{
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #firstnameDiv, #lastnameDiv{
     vertical-align: top;
     display: inline-block;
@@ -57,7 +64,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
 }
 
-#login, #signup{
+#signin, #signup{
     font-weight: bold;
     background-color: #676AD5;
     color: white;
@@ -74,14 +81,9 @@ label{
     padding-left: 10px;
 }
 
-#register{
-    display: block;
-    margin-left: 35px;
-    color: #0047B1;
-}
-
-#register:hover{
-    text-decoration: underline;
+#register, #login{
+    background-color: #A4E7F5;
+    height: 100vh;
 }
 
 button{
@@ -103,11 +105,13 @@ button{
 
 
 /* HOME */
-#mainArea{
-    min-width: 100vw;
-    height: 100vh;
-    text-align: center;
+#home{
     background-color: #A4E7F5;
+    height: 100vh;
+}
+
+#HmainArea{
+    text-align: center;
     padding-top: 20px;
 }
 
@@ -136,6 +140,13 @@ button{
     background-color: #71CADE;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+}
+
+
+/* MAP */
+#map{
+    background-color: rgba(255, 255, 255, 0);
+    height: 90vh;
 }
 
 .placeButton {
@@ -173,4 +184,9 @@ button{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+/* RESOURCES */
+#resources{
+    background-color: #A4E7F5;
+    height: 100vh;
 }
