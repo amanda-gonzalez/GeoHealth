@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
+import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
 import { useState, useRef, useEffect } from 'react';
-import medicalMapMarker from "../images/medical_map_marker.webp";
+import './app.css';
 
 const Background = styled.div`
     background-color: #A4E7F5;
@@ -86,13 +86,15 @@ const Map = () => {
     }
     
     async function calculateRoute() {
-        if (sourceRef.current.value === '' || destinationRef.current.value === '') {
+        if (!userLocation || !selectedPlace) {
             return;
         }
         const directionsService = new window.google.maps.DirectionsService();
         const result = await directionsService.route({
-            origin: sourceRef.current.value,
-            destination: destinationRef.current.value,
+            origin: { lat: userLocation.lat, lng: userLocation.lng },
+            destination: { 
+                lat: selectedPlace.geometry.location.lat(), 
+                lng: selectedPlace.geometry.location.lng() },
             travelMode: window.google.maps.TravelMode.DRIVING
         })
         setDirectionsResponse(result);
@@ -104,14 +106,40 @@ const Map = () => {
         setDirectionsResponse(null);
         setDistance('')
         setDuration('')
-        sourceRef.current.value = '';
-        destinationRef.current.value = '';
+    }
+
+    function handleSelectedPlace(place) {
+        clearRoute();
+        setSelectedPlace(place);
+    }
+
+    function clearPlace() {
+        clearRoute();
+        setSelectedPlace(null);
     }
 
     return (
         <div>
             <Navbar/>
             <Background>
+                <div style={{ display: 'flex', height: '100vh', width: '60vh' }}>
+                    <div style={{ flex: 1, overflowY: 'auto', padding: '10px' }}>
+                        {places.map((place, index)=>(
+                            <div key={index} className="placeButton" onClick={() => handleSelectedPlace(place)}>
+                                <h3>{place.name}</h3>
+                                <p>{place.vicinity}</p>
+                                {selectedPlace && selectedPlace.place_id === place.place_id && (
+                                    <>
+                                        <button onClick={calculateRoute}>Direction</button>
+                                        <p>{distance}</p>
+                                        <p>{duration}</p>
+                                    </>  
+                                )}
+                                {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+                            </div>
+                        ))}
+                    </div>
+                </div>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     zoom={15}
@@ -122,6 +150,14 @@ const Map = () => {
                     }}
                     onLoad = {onMapLoad}
                 >
+                    <div className="floating-buttons">
+                        <button aria-label='center back' onClick={clearRoute}>
+                            Clear Route
+                        </button> 
+                        <button onClick={()=>map.panTo(userLocation)}>
+                            Center
+                        </button>
+                    </div>
                     <Marker 
                         position={userLocation} 
                         animation={window.google.maps.Animation.DROP}
@@ -140,41 +176,17 @@ const Map = () => {
                                 lat:selectedPlace.geometry.location.lat(),
                                 lng:selectedPlace.geometry.location.lng()
                             }}
-                            onCloseClick={() => setSelectedPlace(null)}
+                            onCloseClick={() => clearPlace()}
                         >
                             <div>
                                 <h2>{selectedPlace.name}</h2>
                                 <p>{selectedPlace.vicinity}</p>
+                                <p>{distance}</p>
+                                <p>{duration}</p>
                             </div>
                         </InfoWindow>
                     )}
                 </GoogleMap>
-
-                <div>
-                    <Autocomplete>
-                        <input
-                            type="text"
-                            placeholder="Source"
-                            ref={sourceRef}
-                        />
-                    </Autocomplete>
-                    <Autocomplete>
-                    <input
-                        type="text"
-                        placeholder="Destination"
-                        ref={destinationRef}
-                    />
-                    </Autocomplete>
-                    <button type='submit' onClick={calculateRoute}>
-                        Calculate Route
-                    </button>
-                    <button aria-label='center back' onClick={clearRoute}>
-                        Clear Route
-                    </button> 
-                    <button onClick={()=>map.panTo(userLocation)}>
-                        Center
-                    </button>
-                </div>
             </Background>
         </div>
     )
