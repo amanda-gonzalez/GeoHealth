@@ -11,7 +11,16 @@ const Profile = () =>{
     <div id="profilepage">
         <Navbar/>
         <div id="PmainArea">
-            <div id="personalSection"></div>
+            <div id="personalSection">
+                <h3>E-mail</h3>
+                <p>**input email</p>
+                <hr/>
+                <h3>Insurance Type</h3>
+                <p>info...</p>
+                <hr/>
+                <h3>Other</h3>
+                <p>other..</p>
+            </div>
             <div id="techSection"></div>
         </div>
     </div>
