@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Map from './pages/map';
 import Resources from './pages/Resources';
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,11 @@ const router = createBrowserRouter([
   {
     path:'/resources',
     element:<Resources/>
+  },
+  {
+    path:'/profile',
+    element:<Profile/>
   }
-
 ]);
 
 const App = () => {
