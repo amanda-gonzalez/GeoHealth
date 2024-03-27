@@ -10,7 +10,9 @@ const Profile = () =>{
     return(
     <div id="profilepage">
         <Navbar/>
-        <div id="mainArea">
+        <div id="PmainArea">
+            <div id="personalSection"></div>
+            <div id="techSection"></div>
         </div>
     </div>
     )
