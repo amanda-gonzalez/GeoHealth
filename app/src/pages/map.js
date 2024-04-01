@@ -8,7 +8,8 @@ import './app.css';
 const Background = styled.div`
     background-color: #A4E7F5;
     display: flex;
-    height: 90vh;
+    height: 100vh;
+    width: 100vw;
 `;
 
 const libraries = ['places'];
