@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
+import img1 from "../images/home-img1.png";
+import img2 from "../images/home-img2.png";
 
 import './app.css';
 
@@ -17,10 +19,10 @@ const Home = () => {
                 </div>
                 <div id="homeMedia">
                     <div class="hImg">
-                        <img></img>
+                        <img src={img1}></img>
                     </div>
                     <div class="hImg">
-                        <img></img>
+                    <img src={img2}></img>
                     </div>
                 </div>
             </div>
