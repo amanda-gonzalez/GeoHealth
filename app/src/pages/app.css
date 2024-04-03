@@ -124,6 +124,7 @@ button{
     background-color: #D3F7FF;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+    font-size: 3vh;
 }
 
 #homeMedia{
@@ -137,9 +138,17 @@ button{
     margin-right: 10px;
     width: 37vw;
     height: 30vh;
-    background-color: #71CADE;
+    /* background-color: #71CADE;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset; */
+}
+
+.hImg img{
+    max-width: 100%;
+    min-height: 100%;
+    background-color: #71CADE;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+    border-radius: 10px;
 }
 
 /* MAP */
