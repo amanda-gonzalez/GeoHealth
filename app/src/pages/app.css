@@ -121,6 +121,7 @@ button{
     text-align: center;
     height: 20vh;
     width: 75vw;
+    min-width: 800px;
     background-color: #D3F7FF;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
@@ -138,6 +139,7 @@ button{
     margin-right: 10px;
     width: 37vw;
     height: 30vh;
+    min-width: 300px;
     /* background-color: #71CADE;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset; */
