@@ -16,6 +16,7 @@
     padding-left: 2vh;
     padding-right: 2vh;
     padding: 20px 12px 4px 12px;
+    flex-wrap: nowrap;
 }
 
 #logo img, #profile img{
