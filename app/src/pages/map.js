@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
-import { useState, useRef } from 'react';
+import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
+import { useState, useRef, useEffect } from 'react';
+import './app.css';
 
 const Background = styled.div`
     background-color: #A4E7F5;
     display: flex;
-    height: 90vh;
+    height: 100vh;
+    width: 100vw;
 `;
 
 const libraries = ['places'];
@@ -28,12 +30,15 @@ const Map = () => {
     const [directionsResponse, setDirectionsResponse] = useState(null);
     const [distance, setDistance] = useState('');
     const [duration, setDuration] = useState('');
+    const [places, setPlaces] = useState([]);
+    const [selectedPlace, setSelectedPlace] = useState(null);
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const sourceRef = useRef();
     /** @type React.MutableRefObject<HTMLInputElement> */
     const destinationRef = useRef();
-
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const mapRef = useRef();
 
     const getUserLocation = async () => {
         if (navigator.geolocation) {
@@ -51,23 +56,46 @@ const Map = () => {
         }
     };
 
-    function loadMap(mapInstance) {
-        setMap(mapInstance)
-        getUserLocation();
+    const searchPlaces = () => {
+        const service = new window.google.maps.places.PlacesService(mapRef.current);
+        const request = {
+            location: userLocation,
+            radius: '2500',
+            type: ['hospital']
+        };
+        service.nearbySearch(request, (results, status) => {
+            if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
+                setPlaces(results);
+            }
+        })
     }
+
+    const onMapLoad = useCallback((map) => {
+        mapRef.current = map;
+        setMap(map);
+        getUserLocation();
+    }, [])
+
+    useEffect(() => {
+        if (userLocation) {
+            searchPlaces();
+        }
+    }, [userLocation])
 
     if (!isLoaded) {
         return <div>Loading Map</div>;
     }
     
     async function calculateRoute() {
-        if (sourceRef.current.value === '' || destinationRef.current.value === '') {
+        if (!userLocation || !selectedPlace) {
             return;
         }
         const directionsService = new window.google.maps.DirectionsService();
         const result = await directionsService.route({
-            origin: sourceRef.current.value,
-            destination: destinationRef.current.value,
+            origin: { lat: userLocation.lat, lng: userLocation.lng },
+            destination: { 
+                lat: selectedPlace.geometry.location.lat(), 
+                lng: selectedPlace.geometry.location.lng() },
             travelMode: window.google.maps.TravelMode.DRIVING
         })
         setDirectionsResponse(result);
@@ -79,14 +107,41 @@ const Map = () => {
         setDirectionsResponse(null);
         setDistance('')
         setDuration('')
-        sourceRef.current.value = '';
-        destinationRef.current.value = '';
+    }
+
+    function handleSelectedPlace(place) {
+        clearRoute();
+        setSelectedPlace(place);
+    }
+
+    function clearPlace() {
+        clearRoute();
+        setSelectedPlace(null);
     }
 
     return (
-        <div>
+        <div id="map">
             <Navbar/>
             <Background>
+                <div style={{ display: 'flex', height: '100vh', width: '60vh' }}>
+                    <div style={{ flex: 1, overflowY: 'auto', padding: '10px' }}>
+                        {places.map((place, index)=>(
+                            <div key={index} className="placeButton" onClick={() => handleSelectedPlace(place)}>
+                                <h3>{place.name}</h3>
+                                <p>{place.vicinity}</p>
+                                {selectedPlace && selectedPlace.place_id === place.place_id && (
+                                    <>
+                                        <button onClick={calculateRoute}>Direction</button>
+                                        <p>{distance}</p>
+                                        <p>{duration}</p>
+                                    </>  
+                                )}
+                                {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     zoom={15}
@@ -95,39 +150,48 @@ const Map = () => {
                         streetViewControl: false,
                         mapTypeControl: false
                     }}
-                    onLoad = {loadMap}
+                    onLoad = {onMapLoad}
                 >
-                    <Marker position={userLocation} />
-                    {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
-                </GoogleMap>
-
-                <div>
-                    <Autocomplete>
-                        <input
-                            type="text"
-                            placeholder="Source"
-                            ref={sourceRef}
-                        />
-                    </Autocomplete>
-                    <Autocomplete>
-                    <input
-                        type="text"
-                        placeholder="Destination"
-                        ref={destinationRef}
+                    <div className="floating-buttons">
+                        <button aria-label='center back' onClick={clearRoute}>
+                            Clear Route
+                        </button> 
+                        <button onClick={()=>map.panTo(userLocation)}>
+                            Center
+                        </button>
+                    </div>
+                    <Marker 
+                        position={userLocation} 
+                        animation={window.google.maps.Animation.DROP}
                     />
-                    </Autocomplete>
-                    <button type='submit' onClick={calculateRoute}>
-                        Calculate Route
-                    </button>
-                    <button aria-label='center back' onClick={clearRoute}>
-                        Clear Route
-                    </button> 
-                    <button onClick={()=>map.panTo(userLocation)}>
-                        Center
-                    </button>
-                </div>
+                    {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+                    {places.map((place) => (
+                        <Marker
+                            key={place.place_id}
+                            position={{ lat:place.geometry.location.lat(), lng:place.geometry.location.lng() }}
+                            onClick={() => setSelectedPlace(place)}
+                        />
+
+                    ))}
+                    {selectedPlace && (
+                        <InfoWindow 
+                            position={{
+                                lat:selectedPlace.geometry.location.lat(),
+                                lng:selectedPlace.geometry.location.lng()
+                            }}
+                            onCloseClick={() => clearPlace()}
+                        >
+                            <div>
+                                <h2>{selectedPlace.name}</h2>
+                                <p>{selectedPlace.vicinity}</p>
+                                <p>{distance}</p>
+                                <p>{duration}</p>
+                            </div>
+                        </InfoWindow>
+                    )}
+                </GoogleMap>
             </Background>
-        </div>
+            </div>
     )
 }
 export default Map;

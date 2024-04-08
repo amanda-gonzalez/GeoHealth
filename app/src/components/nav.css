@@ -1,0 +1,38 @@
+#nav{
+    /* display: flex; */
+    height: 10vh;
+    background-color: rgba(0,0,0,0);
+    &:hover {
+        background-color: white;
+        box-shadow: 0px 20px 20px -20px grey;
+    }
+    z-index: 4;
+    min-width: 100vw;
+}
+
+#logo, #profile{
+    display: flex;
+    align-items: center;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding: 20px 12px 4px 12px;
+    flex-wrap: nowrap;
+}
+
+#logo img, #profile img{
+    height: 6vh;
+    width: 6vh;
+}
+
+#links{
+    display: flex;
+    align-items: left;
+}
+
+#profile{
+    float: right;
+}
+
+#logo, #links{
+    float: left;
+}

@@ -16,7 +16,7 @@ const Background = styled.div`
 
 const Form = styled.form`
     background-color: white;
-    height: 50vh;
+    height: 65vh;
     width: 75vh;
     border-radius: 10%;
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
@@ -58,7 +58,7 @@ const Register = () => {
     
 
     return (
-        <div id="Register">
+        <div id="register">
             <Navbar/>
             <div id="mainArea">
                 <Form action="" onSubmit={handleSubmit}>
@@ -81,6 +81,12 @@ const Register = () => {
                         </div>
                         <div id="passwordDiv">
                             <label htmlFor="password"><strong>Password</strong></label>
+                            <ul>
+                                <li>At least 8 characters</li>
+                                <li>Include at least 1 capital letter</li>
+                                <li>Include at least 1 small letter</li>
+                                <li>Include at least 1 number</li>
+                            </ul>
                             <input onChange={handleInput} type="password" id="password" name="password"/>
                             {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
                         </div>
