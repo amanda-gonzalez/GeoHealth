@@ -121,9 +121,11 @@ button{
     text-align: center;
     height: 20vh;
     width: 75vw;
+    min-width: 800px;
     background-color: #D3F7FF;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+    font-size: 3vh;
 }
 
 #homeMedia{
@@ -137,13 +139,96 @@ button{
     margin-right: 10px;
     width: 37vw;
     height: 30vh;
-    background-color: #71CADE;
+    min-width: 300px;
+    /* background-color: #71CADE;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset; */
 }
+
+.hImg img{
+    max-width: 100%;
+    min-height: 100%;
+    background-color: #71CADE;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+    border-radius: 10px;
+}
+
 
 /* MAP */
 #map{
     background-color: rgba(255, 255, 255, 0);
-    height: 90vh;
+    height: 100%;
+    width: 100%;
+}
+
+.placeButton {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.placeButton:hover {
+    background-color: #e7e7e7;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.placeButton:active {
+    background-color: #ddd;
+}
+
+.floating-buttons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.floating-buttons button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* RESOURCES */
+#resources{
+    background-color: #A4E7F5;
+    height: 100vh;
+}
+
+/* PROFILE */
+#profilepage{
+    background-color: #A4E7F5;
+    height: 100vh;
+}
+
+#PmainArea{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#personalSection{
+    background-color: white;
+    height: 70vh;
+    width: 60vw;
+    border-radius: 2px;
+    padding: 5px;
+    display: flex-row;
+    justify-content: space-between;
+}
+
+#techSection{
+    background-color: white;
+    height: 30vh;
+    width: 30vw;
+    border-radius: 2px;
 }
