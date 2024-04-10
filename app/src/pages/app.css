@@ -244,4 +244,19 @@ button{
     display: inline-block;
     /* margin: 20px 10px 10px 30px; */
     border-radius: 16px;
+    margin-top: 20px;
+}
+
+.shareheading{
+    display: flex;
+    align-items: center;
+}
+
+#techSection a{
+    padding-left: 10px;
+}
+
+#techSection p{
+    padding: 0;
+    margin: 0;
 }
