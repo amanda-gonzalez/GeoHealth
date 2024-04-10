@@ -11,6 +11,14 @@ const Resources = () =>{
     <div id="resources">
         <Navbar/>
         <div id="mainArea">
+            <div id="artBox">
+                <div id="contentBox">
+                    <div id="content">
+                        <h3>Article Topic blah blah blah blah</h3>
+                        <p>Article Title... </p>
+                    </div>
+                </div>
+            </div>
             <div id="resourceMedia">
                 <div class="rArticle">
                     <img></img>
