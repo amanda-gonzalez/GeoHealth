@@ -6,6 +6,14 @@ import axios from "axios";
 
 import './app.css';
 
+function copytoclipboard(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText('http://localhost:3000/');
+
+    // Alert the copied text
+    alert("Link copied!");
+}
+
 const Profile = () =>{
     return(
     <div id="profilepage">
@@ -21,7 +29,17 @@ const Profile = () =>{
                 <h3>Other</h3>
                 <p>other..</p>
             </div>
-            <div id="techSection"></div>
+            <div id="techSection">
+                <h3>View Code</h3>
+                <p>.......</p>
+                <hr/>
+                <h3>API Docs</h3>
+                <p>.......</p>
+                <hr/>
+                <h3>Share</h3>
+                <p>share GeoHealth with others!</p>
+                <button type="button" id="sharebtn" onClick={copytoclipboard}>Share</button>
+            </div>
         </div>
     </div>
     )

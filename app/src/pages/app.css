@@ -228,7 +228,20 @@ button{
 
 #techSection{
     background-color: white;
-    height: 30vh;
+    height: 40vh;
     width: 30vw;
     border-radius: 2px;
+    padding: 5px;
+}
+
+#sharebtn{
+    font-weight: bold;
+    background-color: #676AD5;
+    color: white;
+    border: none;
+    padding: 5px 25px;
+    text-decoration: none;
+    display: inline-block;
+    /* margin: 20px 10px 10px 30px; */
+    border-radius: 16px;
 }
