@@ -2,7 +2,7 @@ import express from "express";
 import { loginAdmin } from "../controllers/login.js";
 import { loginUser } from "../controllers/login.js";
 
-const app = express()
+const app = express();
 
 const router = express.Router();
 
