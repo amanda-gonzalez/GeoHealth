@@ -201,35 +201,70 @@ button{
 /* RESOURCES */
 #resources{
     background-color: #A4E7F5;
-    height: 100vh;
+    height: 230vh;
 }
 
+#rmainArea {
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
-#artBox{
+.artBox{
     margin: 0 auto;
+    margin-bottom: 20px;
     padding: 5px;
     height: 50vh;
     width: 60vw;
     min-width: 30vw;
     text-align: left;
     background-color: #D3F7FF;
-    border-radius: 12px;
+    border-radius: 10px;
     border: 0px #D3F7FF;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 #contentBox{
     margin: 0 auto;
-    padding-left: 50%;
+    /*padding-left: 50%;*/
     height: 50vh;
     width: 30vw;
+    
+    #content{
+        margin: 0 auto;
+        text-align: left;
+        font-size: 3vh;
+    }
 }
 
-#content{
-    margin: 0 auto;
-    text-align: left;
-    font-size: 3vh;
+#resourceMedia{
+    padding: 10px;
+    display: flex;
+    justify-content: left;
 }
+
+.rImg{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 23px;
+    width: 37vw;
+    height: 30vh;
+    min-width: 300px;
+    /* background-color: #71CADE;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset; */
+}
+
+.rImg img{
+    max-width: 90%;
+    min-height: 90%;
+    background-color: #71CADE;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px outset;
+    border-radius: 10px;
+}
+
 
 /* PROFILE */
 #profilepage{
