@@ -204,6 +204,33 @@ button{
     height: 100vh;
 }
 
+
+#artBox{
+    margin: 0 auto;
+    padding: 5px;
+    height: 50vh;
+    width: 60vw;
+    min-width: 30vw;
+    text-align: left;
+    background-color: #D3F7FF;
+    border-radius: 12px;
+    border: 0px #D3F7FF;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+#contentBox{
+    margin: 0 auto;
+    padding-left: 50%;
+    height: 50vh;
+    width: 30vw;
+}
+
+#content{
+    margin: 0 auto;
+    text-align: left;
+    font-size: 3vh;
+}
+
 /* PROFILE */
 #profilepage{
     background-color: #A4E7F5;
@@ -228,7 +255,35 @@ button{
 
 #techSection{
     background-color: white;
-    height: 30vh;
+    height: 40vh;
     width: 30vw;
     border-radius: 2px;
+    padding: 5px;
+}
+
+#sharebtn{
+    font-weight: bold;
+    background-color: #676AD5;
+    color: white;
+    border: none;
+    padding: 5px 25px;
+    text-decoration: none;
+    display: inline-block;
+    /* margin: 20px 10px 10px 30px; */
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
+.shareheading{
+    display: flex;
+    align-items: center;
+}
+
+#techSection a{
+    padding-left: 10px;
+}
+
+#techSection p{
+    padding: 0;
+    margin: 0;
 }
