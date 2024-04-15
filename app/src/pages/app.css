@@ -225,6 +225,22 @@ button{
     border: 0px #D3F7FF;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
+#content a:link{
+    text-decoration: none;
+    color: black;
+}
+#content a:visited{
+    text-decoration: none;
+    color: black;
+}
+#content a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+#content a:active{
+    text-decoration: underline;
+    color: blue;
+}
 
 #contentBox{
     margin: 0 auto;
