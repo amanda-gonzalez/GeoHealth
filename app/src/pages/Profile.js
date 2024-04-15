@@ -3,10 +3,11 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import axios from "axios";
-
 import './app.css';
 
 const Profile = () =>{
+    const [currentUser, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
+    currentUser.name = 
     return(
     <div id="profilepage">
         <Navbar/>
