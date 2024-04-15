@@ -23,7 +23,7 @@ const Resources = () =>{
                     <div id="contentBox">
                         <div id="content">
                             <h3>Article Topic: Covid 19</h3>
-                            <p>Article Title: What You Need to Know About Covid 19 Now</p>
+                            <a href="https://www.nyc.gov/site/doh/covid/covid-19-main.page">Article Title: What You Need to Know About Covid 19 Now</a>
                             <p>Article Author: NYC Department of Health</p>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ const Resources = () =>{
                     <div id="contentBox">
                         <div id="content">
                             <h3>Article Topic: Nutrition</h3>
-                            <p>Article Title: Are plant-based meat substitutes really better for the heart than meat options?</p>
+                            <a href="https://www.medicalnewstoday.com/articles/are-plant-based-meat-substitutes-really-better-for-the-heart-than-meat-options">Article Title: Are plant-based meat substitutes really better for the heart than meat options?</a>
                             <p>Article Author: Paul Ian Cross Ph.D.</p>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ const Resources = () =>{
                     <div id="contentBox">
                         <div id="content">
                             <h3>Article Topic: Gut Health</h3>
-                            <p>Article Title: In Conversation: What do we know about the gut microbiome in IBD?</p>
+                            <a href="https://www.medicalnewstoday.com/articles/in-conversation-what-do-we-know-about-the-gut-microbiome-in-ibd">Article Title: In Conversation: What do we know about the gut microbiome in IBD?</a>
                             <p>Article Author:  Maria Cohut Ph.D.</p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ const Resources = () =>{
                     <div id="contentBox">
                         <div id="content">
                             <h3>Article Topic: Health Insurance</h3>
-                            <p>Article Title: Health Insurance: Enrollment Counselors</p>
+                            <a href="https://www.nyc.gov/site/doh/health/health-topics/health-insurance.page">Article Title: Health Insurance: Enrollment Counselors</a>
                             <p>Article Author: NYC Department of Health</p>
                         </div>
                     </div>
