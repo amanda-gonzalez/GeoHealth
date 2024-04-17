@@ -26,6 +26,9 @@ const Profile = () =>{
                 <h3>Insurance Type</h3>
                 <p>info...</p>
                 <hr/>
+                <h3>Saved Articles</h3>
+                <p>info...</p>
+                <hr/>
                 <h3>Other</h3>
                 <p>other..</p>
             </div>
