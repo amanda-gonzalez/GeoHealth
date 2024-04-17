@@ -7,16 +7,15 @@ import './app.css';
 
 const Profile = () =>{
     const [currentUser, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
-    currentUser.name = 
     return(
     <div id="profilepage">
         <Navbar/>
         <div id="PmainArea">
             <div id="personalSection">
-                <h3>E-mail</h3>
+                <h3>{currentUser ? currentUser.email : "guest@geohealth.com"}</h3>
                 <p>**input email</p>
                 <hr/>
-                <h3>Insurance Type</h3>
+                <h3>{currentUser ? currentUser.insuranceType : "Insurance Type"}</h3>
                 <p>info...</p>
                 <hr/>
                 <h3>Other</h3>
