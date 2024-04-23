@@ -235,11 +235,11 @@ button{
 }
 #content a:hover{
     text-decoration: underline;
-    color: blue;
+    color: #71CADE;
 }
 #content a:active{
     text-decoration: underline;
-    color: blue;
+    color: #71CADE;
 }
 
 #contentBox{
@@ -275,10 +275,14 @@ button{
 
 .rImg img{
     max-width: 90%;
+    min-width: 30vw;
     min-height: 90%;
+    max-height: 20vh;
+    object-fit: cover;
     background-color: #71CADE;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px outset;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 
