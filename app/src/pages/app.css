@@ -218,13 +218,14 @@ button{
     padding: 5px;
     height: 40vh;
     width: 60vw;
-    min-width: 30vw;
+    min-width: 700px;
     text-align: left;
     background-color: #D3F7FF;
     border-radius: 10px;
     border: 0px #D3F7FF;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
+
 #content a:link{
     text-decoration: none;
     color: black;
@@ -247,6 +248,7 @@ button{
     /*padding-left: 50%;*/
     height: 30vh;
     width: 30vw;
+    min-width: 300px;
     
     #content{
         margin: 0 auto;
@@ -275,7 +277,7 @@ button{
 
 .rImg img{
     max-width: 90%;
-    min-width: 30vw;
+    min-width: 25vw;
     min-height: 90%;
     max-height: 20vh;
     object-fit: cover;
