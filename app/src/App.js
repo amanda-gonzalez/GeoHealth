@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Map from './pages/map';
 import Resources from './pages/Resources';
 import AdminLoginForm from "./pages/AdminLogin";
+import AdminRegister from "./pages/AdminRegi";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path:'/adminlogin',
     element:<AdminLoginForm/>
+  },
+  {
+    path:'/adminregister',
+    element:<AdminRegister/>
   }
 
 ]);
