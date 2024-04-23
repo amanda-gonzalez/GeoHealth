@@ -26,7 +26,12 @@ let articles = [];
 function parseNews(data){
     articles = [];
     let single = [];
-    for(let i = 0; i < 4; i++){
+    let numarticles = 4;
+    for(let i = 0; i < numarticles; i++){
+        if(data.articles[i].source.name == '[Removed]'){
+            data.articles[i] = data.articles[data.articles.length - 1];
+            data.articles.pop();
+        }
         single.push(data.articles[i].source.name);
         if(data.articles[i].author == null){
             single.push(data.articles[i].source.name);
@@ -47,6 +52,7 @@ function displayNews(articles){
     let authors = document.querySelectorAll('.rAuthor');
     let links = document.querySelectorAll('.rLink');
     let images = document.querySelectorAll('.rInnerImg');
+    console.log(articles);
     for(let i = 0; i < 4; i++){
         sources[i].innerText = articles[i][0];
         authors[i].innerText = articles[i][1];
