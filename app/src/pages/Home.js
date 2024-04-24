@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import img1 from "../images/home-img1.png";
 import img2 from "../images/home-img2.png";
-import ChatBox from "../components/Chatbox";
+import VoiceflowChatWidget from '../components/VoiceflowChat';
 
 import './app.css';
 
@@ -27,7 +27,11 @@ const Home = () => {
                     </div>
                 </div>
                 <div id="chatbox">
-                    <ChatBox/>
+                    <VoiceflowChatWidget
+                        projectID="662888cbc521a4ddc69d9e79"
+                        url="https://general-runtime.voiceflow.com"
+                        versionID="production"
+                    />
                 </div>
             </div>
         </div>
