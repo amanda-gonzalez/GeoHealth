@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import img1 from "../images/home-img1.png";
 import img2 from "../images/home-img2.png";
+import ChatBox from "../components/Chatbox";
 
 import './app.css';
 
@@ -24,6 +25,9 @@ const Home = () => {
                     <div class="hImg">
                     <img src={img2}></img>
                     </div>
+                </div>
+                <div id="chatbox">
+                    <ChatBox/>
                 </div>
             </div>
         </div>
