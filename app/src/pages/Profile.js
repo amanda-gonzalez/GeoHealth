@@ -31,10 +31,14 @@ function getArticles(){
     openPop();
     
     for(let i = 0; i < archive.length; i++){
-        var temp = document.createElement('a');
-        temp.innerText = archive[i][0];
-        temp.href = archive[i][1];
-        popInfoItems.appendChild(temp);
+        if(archive[i][0] == 'insurance'){
+            continue;
+        }else{
+            var temp = document.createElement('a');
+            temp.innerText = archive[i][0];
+            temp.href = archive[i][1];
+            popInfoItems.appendChild(temp);
+        }
     }
 }
 
@@ -49,6 +53,28 @@ function closePop(){
     document.getElementById('popInfo').style.display = 'none';
     document.getElementById('articlePopUp').style.display = 'none';
 }
+
+function saveInsurance(){
+    let input = document.getElementById('insuranceInput').value;
+    localStorage.setItem('insurance', input);
+    setInsurance();
+}
+
+function setInsurance(){
+    let ins = document.getElementById('userInsurance');
+    if(localStorage.getItem('insurance') != null){
+        document.getElementById('insuranceInput').style.display = 'none';
+        document.getElementById('insuranceBtn').style.display = 'none';
+        ins.style.display = 'block';
+        ins.innerText = localStorage.getItem('insurance');
+    }else{
+        document.getElementById('insuranceInput').style.display = 'inline-block';
+        document.getElementById('insuranceBtn').style.display = 'inline-block';
+        ins.style.display = 'none';
+    } 
+}
+
+window.addEventListener('load', setInsurance);
 
 const Profile = () =>{
     return(
@@ -69,13 +95,15 @@ const Profile = () =>{
                 <p>**input email</p>
                 <hr/>
                 <h3>Insurance Type</h3>
-                <p>info...</p>
+                <input type="text" id="insuranceInput"></input>
+                <button type="button" id="insuranceBtn" onClick={saveInsurance}>Save</button>
+                <p id="userInsurance"></p>
                 <hr/>
                 <h3>Saved Articles</h3>
-                <a href="#" onClick={getArticles}>See All Saved Articles</a>
+                <a href="#" onClick={getArticles} id="articleLink">View your saved articles here</a>
                 <hr/>
                 <h3>Other</h3>
-                <p>other..</p>
+                <p>The GeoHealth team is working to release telehealth and mental health options soon!</p>
             </div>
             <div id="techSection">
                 <div class="shareheading">

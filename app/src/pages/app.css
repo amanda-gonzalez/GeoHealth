@@ -345,6 +345,39 @@ button{
     margin: 0;
 }
 
+#insuranceBtn{
+    padding: 2px 8px 2px 8px;
+    background-color: #676AD5;
+    border-radius: 10px;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+#userInsurance{
+    display: none;
+}
+
+#articleLink{
+    color: darkgrey;
+    text-decoration: none;
+}
+
+#articleLink:visited{
+    color: darkgrey;
+}
+
+#articleLink:hover{
+    color: #71CADE;
+    text-decoration: underline;
+}
+
+#articleLink:active{
+    color: #71CADE;
+    text-decoration: underline;
+}
+
 #articlePopUp{
     display: none;
     width: 100vw;
