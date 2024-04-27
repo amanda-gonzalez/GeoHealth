@@ -1,8 +1,10 @@
 import React, { useCallback } from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
+import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow, Autocomplete } from '@react-google-maps/api';
 import { useState, useRef, useEffect } from 'react';
+import { Box, ButtonGroup } from '@chakra-ui/react';
+import { FaTimes } from 'react-icons/fa';
 import './app.css';
 
 const Background = styled.div`
@@ -10,7 +12,60 @@ const Background = styled.div`
     display: flex;
     height: 100vh;
     width: 100vw;
+    position: relative;
 `;
+
+
+const FloatingSearchBar = styled.div`
+    position: absolute;
+    top: 10px;
+    right: 120px; 
+    width: 50%;
+    z-index: 5;  
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+`;
+
+const SearchInput = styled.input`
+    flex: 1 1 auto;
+    width: 90%;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+`;
+
+const SearchButton = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+`;
+
+const ClearButton = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: red;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+`;
+
 
 const libraries = ['places'];
 
@@ -32,13 +87,12 @@ const Map = () => {
     const [duration, setDuration] = useState('');
     const [places, setPlaces] = useState([]);
     const [selectedPlace, setSelectedPlace] = useState(null);
+    const [query, setQuery] = useState('');
 
     /** @type React.MutableRefObject<HTMLInputElement> */
-    const sourceRef = useRef();
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const destinationRef = useRef();
-    /** @type React.MutableRefObject<HTMLInputElement> */
     const mapRef = useRef();
+    const inputRef = useRef();
+    const autocompleteRef = useRef();
 
     const getUserLocation = async () => {
         if (navigator.geolocation) {
@@ -56,6 +110,24 @@ const Map = () => {
         }
     };
 
+    //autocomplete
+    const onLoad = (autocomplete) => {
+        autocompleteRef.current = autocomplete;
+    };
+
+    const onPlaceChanged = () => {
+        if (autocompleteRef.current !== null) {
+            const place = autocompleteRef.current.getPlace();
+            if (place.geometry) {
+                setPlaces([place]);  // Assuming you want to handle multiple places
+                mapRef.current.fitBounds(place.geometry.viewport);
+            } else {
+                console.log("No details available for input: '" + place.name + "'");
+            }
+        }
+    };
+
+    //search nearby places of interest
     const searchPlaces = () => {
         const service = new window.google.maps.places.PlacesService(mapRef.current);
         const request = {
@@ -69,6 +141,21 @@ const Map = () => {
             }
         })
     }
+
+    //input search
+    const handleSearch = () => {
+        const service = new window.google.maps.places.PlacesService(mapRef.current);
+        const request = {
+            query,
+            fields: ['name', 'geometry'],
+        };
+        service.findPlaceFromQuery(request, (results, status) => {
+            if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
+                setPlaces(results);
+                mapRef.current.fitBounds(results[0].geometry.viewport);
+            }
+        });
+    };
 
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
@@ -119,6 +206,12 @@ const Map = () => {
         setSelectedPlace(null);
     }
 
+    function clearSearch() {
+        setQuery('');
+        setPlaces([]);
+        searchPlaces();
+    };
+
     return (
         <div id="map">
             <Navbar/>
@@ -141,6 +234,19 @@ const Map = () => {
                         ))}
                     </div>
                 </div>
+
+                <FloatingSearchBar>
+                    <Box flexGrow={1}>
+                        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+                            <SearchInput ref={inputRef} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search places" />
+                        </Autocomplete>
+                    </Box>
+                    
+                    <ButtonGroup>
+                        <SearchButton onClick={handleSearch}>Search</SearchButton>
+                        <ClearButton onClick={clearSearch}><FaTimes /></ClearButton>
+                    </ButtonGroup>
+                 </FloatingSearchBar>
 
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
