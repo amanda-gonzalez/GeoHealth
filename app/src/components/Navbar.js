@@ -46,6 +46,7 @@ const NavItem = styled(Link)`
 `;
 
 const Navbar = () => {
+    const currentUser = localStorage.getItem("user");
     return(
         <div id="nav">
             <div id="logo">
@@ -60,10 +61,17 @@ const Navbar = () => {
                     <h3>RESOURCES</h3>
                 </NavItem>
             </div>
+
             <div id="profile">
-                <MenuItem to="/login">
+                {currentUser ?
+                <MenuItem to="/profile">
                     <Logo src={User} alt="User"/>
-                </MenuItem>
+                </MenuItem> :
+                    <MenuItem to="/login">
+                        <Logo src={User} alt="User"/>
+                    </MenuItem>
+                }
+
             </div>
         </div>
     )
