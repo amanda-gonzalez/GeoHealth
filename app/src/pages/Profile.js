@@ -38,6 +38,7 @@ function getArticles(){
             temp.innerText = archive[i][0];
             temp.href = archive[i][1];
             popInfoItems.appendChild(temp);
+            popInfoItems.innerHTML += '<br/>';
         }
     }
 }
