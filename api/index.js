@@ -1,9 +1,6 @@
 import express from "express";
-
 import loginRoutes from "./routes/login.js";
-
 import regiRoutes from "./routes/register.js"
-
 import cors from "cors";
 
 const app = express();

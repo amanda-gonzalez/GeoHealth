@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
@@ -38,6 +38,7 @@ function getArticles(){
             temp.innerText = archive[i][0];
             temp.href = archive[i][1];
             popInfoItems.appendChild(temp);
+            popInfoItems.innerHTML += '<br/>';
         }
     }
 }
@@ -74,9 +75,13 @@ function setInsurance(){
     } 
 }
 
-window.addEventListener('load', setInsurance);
+
+//window.addEventListener('load', setInsurance);
 
 const Profile = () =>{
+    useEffect(() => {
+        setInsurance();
+    }, []);
     return(
     <div id="profilepage">
         <Navbar/>

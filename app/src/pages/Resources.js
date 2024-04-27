@@ -28,7 +28,7 @@ function parseNews(data){
     let single = [];
     let numarticles = 4;
     for(let i = 0; i < numarticles; i++){
-        if(data.articles[i].source.name == '[Removed]'){
+        if(data.articles[i].source.name == '[Removed]' || data.articles[i].urlToImage == null){
             data.articles[i] = data.articles[data.articles.length - 1];
             data.articles.pop();
         }
@@ -41,8 +41,10 @@ function parseNews(data){
         single.push(data.articles[i].title);
         single.push(data.articles[i].url);
         single.push(data.articles[i].urlToImage);
+        console.log(single);
         articles.push(single);
         single = [];
+        
     }
     displayNews(articles);
 }
