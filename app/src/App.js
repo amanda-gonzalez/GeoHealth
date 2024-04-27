@@ -7,6 +7,7 @@ import Map from './pages/map';
 import Resources from './pages/Resources';
 import AdminLoginForm from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegi";
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,11 @@ const router = createBrowserRouter([
   {
     path:'/adminregister',
     element:<AdminRegister/>
+  },
+  {
+    path:'/profile',
+    element:<Profile/>
   }
-
 ]);
 
 const App = () => {
