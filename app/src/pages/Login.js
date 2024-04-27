@@ -75,7 +75,7 @@ const LoginForm = () => {
                         </div>
                     </div>
                     <MenuItem id="registerRedirect" to="/register">New User? Sign Up Here</MenuItem>
-                    <button type="signin" id="signup">Sign In</button><br/>
+                    <button type="submit" id="signup">Sign In</button><br/>
                 </Form>
             </div>
         </div>
