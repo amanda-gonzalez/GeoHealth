@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './app.css';
 
@@ -41,6 +41,7 @@ const Register = () => {
     })
 
     const [errors, setErrors] = useState({})
+    const navigate = useNavigate();
 
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: event.target.value}))
@@ -51,7 +52,8 @@ const Register = () => {
         setErrors(validation(values));
         if (!errors.password && !errors.email && !errors.firstname && !errors.lastname) {
             axios.post('http://localhost:4000/api/register/registerUser', values)
-            .then(res => console.log(res))
+            .then(res => {console.log(res)
+                        navigate("/login")})
             .catch(err => console.log(err));
         }
     }

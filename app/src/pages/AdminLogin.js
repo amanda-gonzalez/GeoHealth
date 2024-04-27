@@ -53,7 +53,7 @@ const AdminLoginForm = () => {
     }
 
     return(
-        <div id="login">
+        <div id="adminlogin">
             <Navbar/>
             <div id="mainArea">
                 <Form action="" onSubmit={login}>
@@ -74,7 +74,7 @@ const AdminLoginForm = () => {
                                                                                                         paddingRight: 100+'px',}}/>
                         </div>
                     </div>
-                    <MenuItem id="registerRedirect" to="/register">New User? Sign Up Here</MenuItem>
+                    <MenuItem id="registerRedirect" to="/adminregister">New User? Sign Up Here</MenuItem>
                     <button type="signin" id="signup">Sign In</button><br/>
                 </Form>
             </div>

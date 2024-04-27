@@ -14,23 +14,96 @@ function copytoclipboard(e) {
     alert("Link copied!");
 }
 
+function getArticles(){
+    let popInfoItems = document.getElementById('popInfoItems');
+    popInfoItems.innerHTML = '';
+    var archive = [],
+        keys = Object.keys(localStorage),
+        i = 0, key;
+
+    for (; key = keys[i]; i++) {
+        let data = [];
+        data.push(key);
+        data.push(localStorage.getItem(key));
+        archive.push(data);
+    }
+
+    openPop();
+    
+    for(let i = 0; i < archive.length; i++){
+        if(archive[i][0] == 'insurance'){
+            continue;
+        }else{
+            var temp = document.createElement('a');
+            temp.innerText = archive[i][0];
+            temp.href = archive[i][1];
+            popInfoItems.appendChild(temp);
+        }
+    }
+}
+
+function openPop(){
+    document.querySelector('.bi-x-lg').style.display = 'block';
+    document.getElementById('popInfo').style.display = 'block';
+    document.getElementById('articlePopUp').style.display = 'block';
+}
+
+function closePop(){
+    document.querySelector('.bi-x-lg').style.display = 'none';
+    document.getElementById('popInfo').style.display = 'none';
+    document.getElementById('articlePopUp').style.display = 'none';
+}
+
+function saveInsurance(){
+    let input = document.getElementById('insuranceInput').value;
+    localStorage.setItem('insurance', input);
+    setInsurance();
+}
+
+function setInsurance(){
+    let ins = document.getElementById('userInsurance');
+    if(localStorage.getItem('insurance') != null){
+        document.getElementById('insuranceInput').style.display = 'none';
+        document.getElementById('insuranceBtn').style.display = 'none';
+        ins.style.display = 'block';
+        ins.innerText = localStorage.getItem('insurance');
+    }else{
+        document.getElementById('insuranceInput').style.display = 'inline-block';
+        document.getElementById('insuranceBtn').style.display = 'inline-block';
+        ins.style.display = 'none';
+    } 
+}
+
+window.addEventListener('load', setInsurance);
+
 const Profile = () =>{
     return(
     <div id="profilepage">
         <Navbar/>
+        <div id="popInfo">
+            <svg onClick={closePop} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+            <div id="popInfoItems"></div>
+        </div>
+        <div id="articlePopUp">
+            
+        </div>
         <div id="PmainArea">
             <div id="personalSection">
                 <h3>E-mail</h3>
                 <p>**input email</p>
                 <hr/>
                 <h3>Insurance Type</h3>
-                <p>info...</p>
+                <input type="text" id="insuranceInput"></input>
+                <button type="button" id="insuranceBtn" onClick={saveInsurance}>Save</button>
+                <p id="userInsurance"></p>
                 <hr/>
                 <h3>Saved Articles</h3>
-                <p>info...</p>
+                <a href="#" onClick={getArticles} id="articleLink">View your saved articles here</a>
                 <hr/>
                 <h3>Other</h3>
-                <p>other..</p>
+                <p>The GeoHealth team is working to release telehealth and mental health options soon!</p>
             </div>
             <div id="techSection">
                 <div class="shareheading">
