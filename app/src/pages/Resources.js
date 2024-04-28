@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
@@ -96,7 +96,10 @@ function removeResource(r){
 }
 
 const Resources = () =>{
-    getNews();
+    useEffect(() => {
+        saveFunction();
+        getNews();
+    }, []);
     return(
     <div id="resources">
         <Navbar/>

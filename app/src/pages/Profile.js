@@ -124,6 +124,7 @@ const Profile = () =>{
             <div id="personalSection">
                 <h3>E-mail</h3>
                 <p>{userEmail}</p>
+
                 <hr/>
                 <h3>Insurance Type</h3>
                 <input type="text" id="insuranceInput"></input>
