@@ -45,6 +45,8 @@ const LoginForm = () => {
         e.preventDefault();
         try {
             const response = await axios.post(apiLink, inputs);
+            const token = response.data.token;
+            localStorage.setItem("user", token);
             navigate("/map");
             console.log(response);
         } catch (error) {

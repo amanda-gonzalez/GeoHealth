@@ -13,7 +13,7 @@ export const loginAdmin = (request, response) => {
 
         if (bcrypt.compareSync(request.body.password, data[0].password)) {
 
-            const token = jwt.sign({id: data[0].id}, "jwtkey");
+            const token = jwt.sign({email: data[0].email}, "jwtkey");
             const {password, ...other} = data[0];
             response.cookie("access_token", token, {
                 httpOnly: true
@@ -35,7 +35,7 @@ export const loginUser = (request, response) => {
         if (!data[0].passwords) return response.status(404).json("Password not set.");
 
         if (bcrypt.compareSync(request.body.password, data[0].passwords)) {
-            const token = jwt.sign({id: data[0].id}, "jwtkey");
+            const token = jwt.sign({email: email}, "jwtkey");
             response.status(200).json({token});
         } else {
             return response.status(400).json("Wrong password or email.");
