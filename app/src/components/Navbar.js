@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import GeoHealthLogo from "../images/GeoHealth Logo 1.svg";
@@ -32,6 +32,15 @@ const NavContainer = styled.div`
     
 `;
 
+const Dropdown = styled.div`
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  display: ${props => (props.isOpen ? "block" : "none")};
+`;
+
 const NavItem = styled(Link)`
     font-size: 1.8vh;
     color: black;
@@ -45,8 +54,20 @@ const NavItem = styled(Link)`
     }
 `;
 
+const DropdownItem = styled(Link)`
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+`;
 const Navbar = () => {
     const currentUser = localStorage.getItem("user");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return(
         <div id="nav">
             <div id="logo">
@@ -66,9 +87,23 @@ const Navbar = () => {
                 {currentUser ?
                 <MenuItem to="/profile">
                     <Logo src={User} alt="User"/>
+                    <div onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+                    <Dropdown isOpen={isDropdownOpen}>
+                        <DropdownItem to="/profile">Profile</DropdownItem>
+                        <DropdownItem to="/settings">Settings</DropdownItem>
+                        <DropdownItem to="/logout">Logout</DropdownItem>
+                    </Dropdown>
+                    </div>
                 </MenuItem> :
                     <MenuItem to="/login">
                         <Logo src={User} alt="User"/>
+                        <div onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+                        <Dropdown isOpen={isDropdownOpen}>
+                            <DropdownItem to="/profile">Profile</DropdownItem>
+                            <DropdownItem to="/settings">Settings</DropdownItem>
+                            <DropdownItem to="/logout">Logout</DropdownItem>
+                        </Dropdown>
+                        </div>
                     </MenuItem>
                 }
 

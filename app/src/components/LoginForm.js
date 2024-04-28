@@ -18,7 +18,7 @@ const Input = styled.input`
 `;
 
 const LoginForm = () => {
-    const apiLink = "http://localhost:4000/api/auth/login";
+    const apiLink = "http://localhost:4000/api/login/login";
     const [inputs, setInputs] = useState({
         username: "",
         password: ""

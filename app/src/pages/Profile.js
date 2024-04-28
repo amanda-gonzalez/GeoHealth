@@ -6,6 +6,7 @@ import axios from "axios";
 
 import './app.css';
 
+
 function copytoclipboard(e) {
     e.preventDefault();
     navigator.clipboard.writeText('http://localhost:3000/');
@@ -78,7 +79,32 @@ function setInsurance(){
 
 //window.addEventListener('load', setInsurance);
 
+
+
 const Profile = () =>{
+    const [userEmail, setUserEmail] = useState("");
+    useEffect(() => {
+        const getProfile = async () => {
+            try {
+                const token = localStorage.getItem("user");
+
+
+                const response = await axios.get("http://localhost:4000/api/auth/getUser", {
+                    headers: {
+                        'Authorization': token
+                    }
+                });
+
+                console.log(response.data[0].email);
+
+                setUserEmail(response.data[0].email);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getProfile();
+    }, []);
+
     useEffect(() => {
         setInsurance();
     }, []);
@@ -97,7 +123,7 @@ const Profile = () =>{
         <div id="PmainArea">
             <div id="personalSection">
                 <h3>E-mail</h3>
-                <p>**input email</p>
+                <p>{userEmail}</p>
                 <hr/>
                 <h3>Insurance Type</h3>
                 <input type="text" id="insuranceInput"></input>
