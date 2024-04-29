@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 import './app.css';
@@ -82,6 +83,11 @@ function setInsurance(){
 
 
 const Profile = () =>{
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.removeItem("user");
+        navigate("/login");
+    }
     const [userEmail, setUserEmail] = useState("");
     useEffect(() => {
         const getProfile = async () => {
@@ -136,7 +142,7 @@ const Profile = () =>{
                 <hr/>
                 <h3>Other</h3>
                 <p>The GeoHealth team is working to release telehealth and mental health options soon!</p>
-                <button type="button" id="logoutbtn">Log Out</button>
+                <button type="button" id="logoutbtn" onClick={logout}>Log Out</button>
             </div>
             <div id="techSection">
                 <div class="shareheading">

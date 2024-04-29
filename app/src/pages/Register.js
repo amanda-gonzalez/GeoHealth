@@ -47,6 +47,7 @@ const Register = () => {
         setValues(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(validation(values));
