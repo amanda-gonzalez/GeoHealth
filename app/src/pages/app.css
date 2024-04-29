@@ -331,6 +331,20 @@ button{
     margin-top: 20px;
 }
 
+#logoutbtn{
+    font-weight: bold;
+    background-color: #676AD5;
+    color: white;
+    border: none;
+    padding: 5px 25px;
+    text-decoration: none;
+    display: inline-block;
+    /* margin: 20px 10px 10px 30px; */
+    border-radius: 16px;
+    margin-top: 125px;
+    margin-left: 550px;
+}
+
 .shareheading{
     display: flex;
     align-items: center;
