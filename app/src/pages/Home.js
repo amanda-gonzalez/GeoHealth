@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import img1 from "../images/home-img1.png";
 import img2 from "../images/home-img2.png";
-import VoiceflowChatWidget from '../components/VoiceflowChat';
+import { BubbleChat } from 'flowise-embed-react';
+import io from 'socket.io-client';
 
 import './app.css';
 
 
 
 const Home = () => {
+
     return (
         <div id="home">
             <Navbar/>
@@ -26,13 +28,8 @@ const Home = () => {
                     <img src={img2}></img>
                     </div>
                 </div>
-                <div id="chatbox">
-                    <VoiceflowChatWidget
-                        projectID="662888cbc521a4ddc69d9e79"
-                        url="https://general-runtime.voiceflow.com"
-                        versionID="production"
-                    />
-                </div>
+                <BubbleChat chatflowid="af016c09-8a9d-41e6-a554-dda4d48f2e72" apiHost="http://localhost:4050" />
+                
             </div>
         </div>
     )
