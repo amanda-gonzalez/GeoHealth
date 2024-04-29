@@ -7,6 +7,8 @@ import { Box, ButtonGroup } from '@chakra-ui/react';
 import { FaTimes } from 'react-icons/fa';
 import './app.css';
 
+import markerIcon from '../images/icons8-heart-with-pulse-48.png'
+
 const Background = styled.div`
     background-color: #A4E7F5;
     display: flex;
@@ -276,6 +278,7 @@ const Map = () => {
                             key={place.place_id}
                             position={{ lat:place.geometry.location.lat(), lng:place.geometry.location.lng() }}
                             onClick={() => setSelectedPlace(place)}
+                            icon={ markerIcon }
                         />
 
                     ))}
