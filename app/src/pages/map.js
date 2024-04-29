@@ -5,6 +5,7 @@ import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow, Auto
 import { useState, useRef, useEffect } from 'react';
 import { Box, ButtonGroup } from '@chakra-ui/react';
 import { FaTimes } from 'react-icons/fa';
+import { BubbleChat } from 'flowise-embed-react';
 import './app.css';
 
 import markerIcon from '../images/icons8-heart-with-pulse-48.png'
@@ -299,6 +300,7 @@ const Map = () => {
                         </InfoWindow>
                     )}
                 </GoogleMap>
+                <BubbleChat chatflowid="af016c09-8a9d-41e6-a554-dda4d48f2e72" apiHost="http://localhost:4050" />
             </Background>
             </div>
     )

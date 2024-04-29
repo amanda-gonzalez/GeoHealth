@@ -4,7 +4,6 @@ import styled from "styled-components";
 import img1 from "../images/home-img1.png";
 import img2 from "../images/home-img2.png";
 import { BubbleChat } from 'flowise-embed-react';
-import io from 'socket.io-client';
 
 import './app.css';
 
