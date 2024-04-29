@@ -136,6 +136,7 @@ const Profile = () =>{
                 <hr/>
                 <h3>Other</h3>
                 <p>The GeoHealth team is working to release telehealth and mental health options soon!</p>
+                <button type="button" id="logoutbtn">Log Out</button>
             </div>
             <div id="techSection">
                 <div class="shareheading">
